@@ -1,0 +1,37 @@
+body{
+    width: 300px;
+    margin-top:200px;
+    margin-left: 500px;
+    /*margin: 100px 0 0 200px; */
+    background-image: url(/im)
+}
+form{
+    border: 1px solid blue;
+    text-align:center;
+    border-radius: 25px;
+    font-family: cursive;
+font-size: 24px;
+box-shadow:  0 0 100px blue;
+}
+input[type="text"],input[type="password"]{
+    height: 25px;
+width: 200px;
+border: 1px solid black;
+border-radius: 50px;
+margin: 7px;
+}
+input[type="text"]:focus,input[type="password"]:focus{
+    outline: none;
+    background-color: blue;
+}
+button{
+    background-color: blue;
+   padding: 5px;
+   width: 100px;
+   margin-bottom: 10px;
+   border-radius: 50px;  
+}
+button:hover{
+    background-color: green;
+    cursor: pointer;
+}

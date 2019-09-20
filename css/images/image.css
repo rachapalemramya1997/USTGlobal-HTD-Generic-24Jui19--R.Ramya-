@@ -1,0 +1,46 @@
+body{
+    width: 300px;
+    margin-top:200px;
+    margin-left: 500px;
+    /*margin: 100px 0 0 200px; */
+    background-image: url(/images/bloom-blossom-close-up-36764.jpg);
+    /* the above line of code create many copy of images so to avoid that we do......*/
+    background-size: cover;
+}
+form{
+    background-image: url(/images/gif.gif);
+    background-size: cover;
+    color: white;
+    border: 1px solid blue;
+    text-align:center;
+/* border in curve shape */
+    border-radius: 25px;
+    font-family: cursive;
+    /* shading effect */
+font-size: 24px;
+box-shadow:  0 0 100px blue;
+}
+input[type="text"],input[type="password"]{
+    height: 25px;
+width: 200px;
+border: 1px solid black;
+border-radius: 50px;
+margin: 7px;
+text-align: center;
+}
+/* to remove the focus in the border chk bellow */
+input[type="text"]:focus,input[type="password"]:focus{
+    outline: none;
+    background-color: rgb(251, 255, 0);
+}
+button{
+    background-color: rgb(0, 217, 255);
+   padding: 5px;
+   width: 100px;
+   margin-bottom: 10px;
+   border-radius: 50px;  
+}
+button:hover{
+    background-color: rgb(51, 153, 51);
+    cursor: pointer;
+}

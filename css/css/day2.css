@@ -1,0 +1,20 @@
+.img.div{
+    float: left;
+    border: 1px solid #02022c;
+    border-radius: 25px;
+    overflow: hidden;
+    text-align: center;
+    margin-left: 10px;
+}
+img{
+    width: 150px;
+    height: 100px;
+    transition: all 2s;
+}
+img:hover{
+    transform: scale(1.2,1.1); 
+}
+.desc{
+    margin-top: 10px;
+    font-family: cursive;
+}

@@ -1,0 +1,438 @@
+
+1.Write a query to create database.
+    >create database testyantra_db;
+2.Write a query to show database
+    >show databases;
+3.Write a query to enter in a particular database
+    >use testyantra;
+4.Write a query to craete a student table.
+    >create table student(id int,name varchar(120),emailId varchar(130));
+5.Write a query to show tables in a database.
+    >show tables;
+6.Write a query to show structure of table.
+    >desc student;
+7.Write a query to drop a table.
+    >drop table student;
+8.Write a query to drop database.
+    > drop database testyantra_db;	
+9.Write a query to add column to existing table.
+    >alter table student add column address varchar(200);     //add column
+	>alter table student add mobile_no int;        //add column
+10.Write a query to drop column from a table.
+    >alter table student drop mobile_no;             //drop column
+11.Write a query to Rename a column.
+    >alter table student change  name studentName varchar(120);    //rename columnname
+12.Write a query to add a column address.
+    >alter table student add column address varchar(200); 
+13.Write a query to change table name.
+    >rename table student to student_info;     //rename tablename
+14.Write a query to insert a record in a table.
+    >insert into student_info(id,name,emailId) values(100,'pravin','pravinkumar@gmail.com');
+	>insert into student_info values(200,'prashant','prashant@gmail.com');
+	>insert into student_info values(102,'pravin','pravinkumar@gmail.com'),(300,'Ravi','ravi@gmail.com'),(400,'hfjhjd','jhfjh@gmail.com') ;
+	>insert into student_info(id,name) values(500,'Ramesh'),(600,'jhf');
+15.Write a query to check data inserted in table.
+    > select * from student_info;
+16.Write q query to update records in a table.
+    >update student_info set name='ravi';	
+17.Write a query to delete record from the table.
+    >delete from student_info;	
+	>delete from student_info where id=400;
+18.Write a query to print id and name from a table.
+    >select id,name from student_info;
+19.Write a query to display id,name which name is 'Ravi';
+    >select * from student_info where name='Ravi';
+20.Write a query to update a record in a table which id=300.
+    >update student_info set name='Prashant' where id=300;
+21.Write a query to delete a record from a table.
+    >delete from student_info where id=300;	
+	
+	
+	//second day
+
+DML
+*************************
+INSERT
+**************************************
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tyss               |
+| ust_global         |
+| world              |
++--------------------+
+8 rows in set (0.56 sec)
+
+mysql>  show tables;
+ERROR 1046 (3D000): No database selected
+mysql> show UST_Global;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UST_Global' at line 1
+mysql> use databases;
+ERROR 1049 (42000): Unknown database 'databases'
+mysql> use UST_Global;
+Database changed
+mysql> show tables;
+Empty set (0.03 sec)
+
+mysql> use databases;
+ERROR 1049 (42000): Unknown database 'databases'
+mysql> use tyss;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_tyss |
++----------------+
+| student_info   |
++----------------+
+1 row in set (0.02 sec)
+
+mysql> select * from student_info;
++------+-------------+----------------+----------+
+| id   | studentName | emailId        | mobileNo |
++------+-------------+----------------+----------+
+|  101 | raji        | raji@gmail.com |    16557 |
+|  102 | raju        | raja@gmail.com |    16558 |
+|  102 | raju        | raja@gmail.com |    16558 |
++------+-------------+----------------+----------+
+3 rows in set (0.90 sec)
+
+mysql>
+
+UPDATE
+**************************
+update student_info set mobileNo=120008;
+
+slect * from student_info;
+mysql> select *from student_info;
++------+-------------+----------------+----------+
+| id   | studentName | emailId        | mobileNo |
++------+-------------+----------------+----------+
+|  101 | raji        | raji@gmail.com |   120008 |
+|  102 | raju        | raja@gmail.com |   120008 |
+|  102 | raju        | raja@gmail.com |   120008 |
++------+-------------+----------------+----------+
+3 rows in set (0.00 sec)
+
+
+
+DELETE
+*********************************
+delete from student_info;
+
+mysql> delete from student_info;
+Query OK, 3 rows affected (0.13 sec)
+
+mysql> select *from student_info;
+Empty set (0.00 sec)
+
+mysql> truncate table student_info;
+Query OK, 0 rows affected (0.44 sec)
+
+mysql> select * from student_info;
+Empty set (0.00 sec)
+
+
+DQL
+*****************************************************
+==>>only one command to retrive the data from database is:
+select
+===>>>>>>with the help of select we can perform retrival from the table in the three  diff ways 
+selection
+projection 
+joins
+
+
+PROJECTION
++++++++++++++++++++++++++++++
+SYNTAX@@@@
+select column name from ntable name
+insert into student_info values(408,'bhavya','bhavyas@gmail.com',1345),(413,'sidhu','sidhug@gmail.com',3768);
+Query OK, 2 rows affected (0.09 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from student_info;
++------+-------------+-------------------+----------+
+| id   | studentName | emailId           | mobileNo |
++------+-------------+-------------------+----------+
+|  408 | bhavya      | bhavyas@gmail.com |     1345 |
+|  413 | sidhu       | sidhug@gmail.com  |     3768 |
++------+-------------+-------------------+----------+
+2 rows in set (0.00 sec)
+
+
+
+JOINS
+*****************************************
+multiple of table at the same time is known as joins
+
+
+******************************************
+
+select * from Tablename
+
+#select a table from database and put under execution 
+we can pass table name as an argument
+#it is used to select coloumns or an expresions from the table which is under execution and it is 
+also responsible to execute the result set
+
+
+* select all the information
+
+first from will execute and select will execute
+
+SQL CLAUSES
+***********************************
+SQL consists of multiple clauses
+=>is class is subprogram which can accept arguments
+WHERE CLAUSE
+****************
+=> the where clause is used to filter records.
+=> the where clause is used to extract only those recordes that fulfill a specified condition.
+WHERE syntax:
+Select column1,columm2,..........From table_name
+where condition;
+
+
+select * from Customers
+where country = 'Mexico';
+ it extract the table from {1}
+where condition{2}
+select{3}
+
+<>WAQ to display id , name from the table?
+
+mysql> select * from student_info where id=413;
++------+-------------+------------------+----------+
+| id   | studentName | emailId          | mobileNo |
++------+-------------+------------------+----------+
+|  413 | sidhu       | sidhug@gmail.com |     3768 |
+
+==>> waq to update a colum for perticular id
+**************************************
+
+mysql> update student_info set mobileNo=73308 where id=413;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student_info;
++------+-------------+-------------------+----------+
+| id   | studentName | emailId           | mobileNo |
++------+-------------+-------------------+----------+
+|  408 | bhavya      | bhavyas@gmail.com |     1345 |
+|  413 | sidhu       | sidhug@gmail.com  |    73308 |
++------+-------------+-------------------+----------+
+2 rows in set (0.00 sec)
+note: where class doesnot support insert operation
+DELETE
+********************************
+to delete the perticular record synrtax is
+delete from student_info where id=256;
+
+TRUNCATE
+*************************888
+if we want to delete all the data from the table we will go to truncate command
+if we want to delete perticular record we go for delete.
+if we want to delete the structure and records of the table then we will go to "DROP"
+
+
+                //3rd day
+1, use jspiders;
+2, show tables;
+3, desc employee_info;
+4, insert into employee_info values(101,'allen','allen@gmail.com','sales Department',45673,30,'1980-04-13','2000-03-05',5000,10,'A+');
+5, select * from employee_info;
+    mysql> select * from employee_info;
++------+-----------+----------------------+-----------------------+----------+------+------------+------------+--------+--------+------------+
+| id   | name      | emailid              | designation           | mobileno | age  | dob        | doj        | salary | deptid | bloodgroup |
++------+-----------+----------------------+-----------------------+----------+------+------------+------------+--------+--------+------------+
+|  107 | adams     | adams@gmail.com      | salesman              |    12343 |   25 | 1994-11-23 | 2017-12-21 |   8500 |     10 | A-         |
+|  101 | allen     | allen@gmail.com      | sales Department      |    45673 |   30 | 1980-04-13 | 2000-03-05 |   5000 |     10 | A+         |
+|  113 | anusha    | anusha@gmail.com     | analyst               |    91523 |   20 | 1998-05-26 | 2019-08-27 |   4500 |     20 | B-         |
+|  103 | asma      | asmasyed@gmail.com   | Manager               |    98733 |   35 | 1981-10-03 | 2004-08-25 |   7500 |     20 | AB+        |
+|  108 | divya     | divya@gmail.com      | clerk                 |    78343 |   35 | 1984-01-13 | 2006-02-21 |   4500 |     30 | AB-        |
+|  114 | karthick  | karthick@gmail.com   | salesman              |    81523 |   30 | 1988-04-16 | 2009-02-17 |   8500 |     10 | O+         |
+|  110 | mahitha   | mahitha@gmail.com    | production manager    |    95463 |   21 | 1997-04-19 | 2018-07-01 |   7500 |     30 | B+         |
+|  104 | miller    | miller@gmail.com     | clerk                 |    54783 |   28 | 1986-10-03 | 2007-10-20 |   4500 |     30 | O+         |
+|  111 | pallavi   | pallavi@gmail.com    | manager               |    91263 |   26 | 1993-09-19 | 2018-05-11 |   6500 |     10 | A+         |
+|  105 | priya     | reddypriya@gmail.com | president             |    56893 |   38 | 1976-11-23 | 1999-11-20 |   8500 |     20 | B+         |
+|  106 | roopa     | roopa@gmail.com      | analyst               |    98993 |   34 | 1975-07-20 | 1993-01-10 |   7000 |     10 | B-         |
+|  112 | saritha   | saritha@gmail.com    | supervisor            |    89263 |   29 | 1989-03-29 | 2016-07-17 |   7000 |     30 | A-         |
+|  102 | smith     | smith@gmail.com      | production Department |    56433 |   32 | 1982-11-23 | 2002-06-15 |   6500 |     30 | B+         |
+|  115 | tejaswini | tejaswini@gmail.com  | analyst               |    82343 |   23 | 1996-09-26 | 2017-12-12 |   5500 |     30 | A+         |
+|  109 | yuvaraj   | yuvaraj@gmail.com    | salesman              |    97433 |   38 | 1981-01-13 | 2003-08-11 |   5500 |     40 | AB+        |
++------+-----------+----------------------+-----------------------+----------+------+------------+------------+--------+--------+------------+
+
+//aliasing
+6, //write a query to give temporary name for bloodgroup column
+    select bloodgroup as bg from employee_info;
+7,//write a query to give temporary name for bloodgroup column and display 3 columns
+  select id,name,bloodgroup as bg from employee_info;
+8, //write a query to display ename,designation,salary,annual salary
+     select id,name,designation,salary,salary*12 as annual_salary from employee_info;
+9, //write a query to display ename,designation,salary,annual salary without using as keyword
+     select id,name,designation,salary,salary*12 annual_salary from employee_info;
+10, //write a query to give the alias name for all the columns present in your employee info
+   select id idno,name ename,emailid mailid,designation job,mobileno phno,age years,dob birthdate,doj hireddate,salary sal,deptid deptno,bloodgroup bg  from employee_info;
+
+//distinct
+11, //write a query to display unique designation from employee_info
+    select distinct designation from employee_info;
+12,//write a query to display the unique deptno from employee_info table
+     select distinct deptid from employee_info;
+13,//we want to fetch both the columns with the unique value 
+    select distinct deptid,designation from employee_info;
+   //distinct//if more than one argument is passed to distinct it will remove the combination of column duplicates
+14,//write a query to display unique value of designation as well as deptid
+    select distinct deptid,designation from employee_info;
+     select distinct designation,deptid from employee_info;
+15,//write a query to display unique value of deptid,designation,age
+   select distinct deptid,designation,age from employee_info;
+
+//operators
+//arithmetic (+,-,*,/,%)
+16, //write a query to display the salary to decrement by 5000
+ select name,salary,salary-5000 from employee_info;
+17, //write a query to display the name,salary to increment by 5000
+ select name,salary,salary+5000 from employee_info;
+18,//write a query to display the name,salary and annual sal
+select name,salary,salary*12 from employee_info;
+19,//write a query to display the name,salary and perday sal
+select name,salary,(salary*12)/365 from employee_info;
+20,//mod operator
+select 10%3;
+
+//relational (=,!=,<>,>,<,<=,>=)
+20,//write a query to display all the records excluding dept 10
+ select * from employee_info where deptid!=10;
+21,//write a query to display name designation mobile number age whose salary is greater  than 5000
+ select name,designation,mobileno,age,salary from employee_info where salary>5000;
+22,//write a query to display name designation mobile number age whose salary is less than 5000
+select name,designation,mobileno,age,salary from employee_info where salary<5000;
+23,//write a query to display name designation mobile number age whose salary is less  than equal to 6000
+select name,designation,mobileno,age,salary from employee_info where salary<=6000;
+24,//write a query to display name designation mobile number age whose salary is greater  than equal to 6000
+select name,designation,mobileno,age,salary from employee_info where salary>=6000;
+
+//logical (and both are true it displays true)(or if any one is true it displays true)(not)
+//logical
+(NOT,AND,OR)execution order
+
+/// (AND) (1,both are true it displays true)    (2,1st condition is true it checks 2nd condition )  (3, 1st condition is false it is not checking 2nd)
+25,//write a query to display all the records of employee_info table whose salary is 10000 and job designation is analyst
+     select * from employee_info where designation='analyst' and salary=10000;
+
+///(OR)  (if any one is true it displays true)   (if 1st condition is true it not checks 2nd condition )  ( 1st condition is false it is checking 2nd result depend on 2nd condition) 
+26,//write a query to display all the records of employee_info table whose is working in deptid 20 or deptid 60
+      select * from employee_info where deptid=20 or deptid=60;
+27,//write a query to display name salary emailid who is working as a tester and age is greater than 20
+     select name,emailid,salary from employee_info where designation='tester' or age>20;
+     select name,emailid,salary from employee_info where designation='tester' and age>20;
+28,//write a query to display the name of all the records  who is working as a tester and in deptid 30 or who is working as a clerk where salary>5000
+      select name from employee_info where designation='manager' and deptno=30 or designation='clerk' and salary>5000;
+29,//write a query to display salary=10000 and designation is software developer
+        select name from employee_info where designation='software developer' and salary=10000;
+
+///(NOT)  (t -> f)(f->t)   syn: select * from employee_info where not column_name=value;
+30,//write a query to display the all the records excluding deptid 20 or 30
+     select * from employee_info where deptid!=20 and deptid!=30;
+     select * from employee_info where not deptid=20 and not deptid=30;
+     select * from employee_info where not (deptid=20 or deptid=30);
+31,//write a query to display all the employee details excluding salesman who all are working in deptno 40
+      select * from employee_info where not (designation='salesman' or deptid=40);
+32,//write a query to display all the employee details who is working as a salesman for deptid 20 or 30
+        select * from employee_info where designation='salesman' and (deptid=20 or deptid=30);
+33,//write a query to display all the employee details who is working in deptid 20 only their salary>10000vand lessthan 20000 including 10000 and 20000
+        select * from employee_info where deptid=20 and (salary>=10000 and salary<=20000);
+34,//write a query to display all the employee details who is working as a software developer and date of birth in 1994
+       select * from employee_info where designation='software developer' and dob='1994-01-12';
+
+//special operators
+
+35,//write a query to display all the employee details who is working in deptid 20 or 10 or 30
+         select * from employee_info where deptid=10 or deptid=20 or deptid=30;
+///in operator (to eliminate multiple or condition we use in operator)it is used to evaluate multiple values
+syntax: select * from employee_info where columnname in(value1,value2,value3);
+
+35,write a query to display all the employee details who is working in deptid 20 or 10 or 30
+           select * from employee_info where deptid in(10,20,30);
+36,//write a query to display all the employee details whose job designation is tester hr and analyst
+            select * from employee_info where designation in('tester','analyst','hr');
+37,//write a query to display all the employee details who are working as a clerk in dept 20 30 40 50 60 70
+      select * from employee_info where deptid in(40,20,30,50,60,70) and designation='clerk';
+
+///not in operator (not in operator is a multivalued operator
+syntax: select * from employee_info where columnname not in(value1,value2,value3);
+
+38,//write a query to display all the employee details who are working as a clerk in dept 20 30 40 50 60 70
+       select * from employee_info where deptid not in(40,20,30,50,60,70) and designation='clerk';
+39,//write a query to display all the employee details who are working in dept 20,40,60 excluding salesman or analyst
+        select * from employee_info where deptid in(20,60,40) and designation not in('salesman','analyst');
+
+///between and operator (used for searching based on range of values)
+syntax: select * from employee_info where columnname between values1 and values2
+
+40,//write a query to display all the employee details whose salary in the range of 10000 to 50000
+    select * from employee_info where salary between 10000 and 50000;
+41,//write a query to display all the employee details who hired in 2017
+      select * from employee_info where doj between '2017-01-01' and '2017-12-31';
+
+///not between and
+syntax: select * from employee_info where columnname not between values1 and values2
+
+42,//write a query to display all the employee details excluding who is hired in 2019
+      select * from employee_info where doj not between '2019-01-01' and '2019-12-31';
+43,//write a query to display employee name salary and deptno of all the employees who is working in deptno 10 or20 excluding employee whose salary>=15000 and salary<=50000
+       select name,salary,deptid from employee_info where deptid in(10,20) and salary not between 15000 and 50000;
+
+///isnull operator   (it  is used to check the null value)(if any record is null then it will give true)(if any record is not null then it will give false)
+syntax: select * from employee_info where columnname is null;
+
+44,//write a query to display employee details whose age is null
+     select * from employee_info where age is null;
+
+///like operator (like operator is used to perform the pattern matching)     
+syntax: select * from employee_info where columnname like '%/_';
+//characters is of two types
+  1,ordinary character
+  2,special or wildcard character (two types  1.% (matches 0 or n characters) 2._ (matches exactly one character))
+
+45,//write a query to display employee details whose name contains only 5 characters
+     select * from employee_info where name like '_____';
+46,//write a query to display employee details whose name has atleast 5 characters
+     select * from employee_info where name like '_____%';
+47,//write a query to display employee details whose name starts with s
+     select * from employee_info where name like 's%';
+48,//write a query to display name salary dob doj age whose name start with s and end with s
+     select name,dob,doj,age,salary from employee_info where name like 's%s';
+49,//write a query to display all the employee details whose second character is d
+      select * from employee_info where name like '_d%';
+50,//write a query to display all the employee details where designation have atleast ee
+     select * from employee_info where designation like '%e%e%';
+51,//write a query to display all the strings of length 5 the name starts with s and second last character is l
+     select * from employee_info where name like 's__l_';
+52,//write a query to display all the employee details if the name of employee start with r character or starts with z character
+     select * from employee_info where name like 'r%' or name like 'z%';
+53,//write a query to display all the employee details in the name 3rd  character should be c and 6th character should be i
+     select * from employee_info where name like '__c__i';
+
+
+///not like operator   (is used to select all the string which do not match with the given string)
+syntax: select * from employee_info where columnname not like '%/_';
+
+53,//write a query to display all the employee details excluding whose name start with a
+       select * from employee_info where name not like 'a%';
+
+*********************************insert null values***************************************
+
+ insert into employee(id,name,emailId,designation,mobileno,dob,doj,deptid,bloodgroup) values(116,'kokila','kokila@gmail.com','supervisor',98769,'1993-12-06','2016-02-17',50,'A+');
+         
+
+
+
++------+-------------+---------------

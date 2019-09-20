@@ -1,0 +1,285 @@
+sqlyog
+google go to sqlyog
+softonic.com
+download free version 
+install password root ,port no 3306
+create table
+write query //no need to write ;
+select that query (click on execute button) or (cntrl+f5)
+help-click on shortcuts it display all shortcuts
+rightclick on table name it shows every option create,alter, all
+
+******************************
+1,write a query to display all the details of employee whose designation is tester and software developer
+   SELECT * from employee_info where designation in('tester','software developer')
+
+*****************************************************************************************************************
+                                  SUBQUERY
+
+	=> a query within another query
+	=> also known as nested query or inner query
+	=>subquery is also anotherway to fetch the data from multiple table
+	=>subquery must be enclosed with paranthesis ()
+	=>always inner query should be executed first .the output of inner query is taken as input for outer query.we will get output from outer query.
+		**syntax: select * from tablename where (select * from tablename );
+
+***//when to use subquery in  where clause
+    =>scenario 1:     if the given condition contains unknown value then we can use subquery to obtain the unknown value
+    =>scenario 2:     if the column to be selected and the condition to be filtered a given for two different tables we can use subquery.
+
+***********two types***********
+1. single row subquery
+                 **syntax:  select column1,column2,... from table where column1 operator(select column from table where expr1=value);
+       =>single value operator such as =,<,>,!= .
+2. multi row subquery
+                  **syntax:  select column1,column2,... from table where column1 operator(select column from table where expr1=value);
+       =>if the operator such as multi value operator(in) are used. it can return one or more no of rows(inner query can return any no of rows).
+
+********************************
+1,write a query to display name of the employee who is working for research department
+     SELECT name from employee_info where deptid=(select deptid from department where deptname='research');
+2,write a query to display name of the employee who is working in location which has atleast one 'a' character in its name
+     SELECT name from employee_info where deptid in (select deptid from department where instr(location,'a')!=0);
+    SELECT name from employee_info where deptid in (select deptid from department where location like '%a%');
+3,write a query to display second max salary from employee table
+    select max(salary) from employee_info where salary<(select max(salary) from employee_info);
+4,write a query to display third max salary from employee table
+    select max(salary) from employee_info where salary<(select max(salary) from employee_info where salary<(select max(salary) from employee_info));
+***********************************************************************************************
+                                                                               JOINS
+
+	=>it is used to fetch the data from one or more tables
+	=>it is used for combining column from two or more tables by using values common to both the values
+	=>minimum required condition for joining table is atleast number  number of tables should be two
+
+**********types of join*****
+*******************
+1.cross join or cartesian joins:-
+	=>in cartesian join a record from 1 table is merge with each and every record of another table 
+	     ( or) join two table records from left table is merge with each and every record with the right table.
+ 		  **syntax:-      select column-name-list from table-name1 cross join table-name1;
+ //1,write a query to display all the records using cartesian joins
+    //select * from employee_info cross join department;
+*******************
+2.Inner Join:-
+	=>Joining two tables with the help of joint column is known as inner join.
+		 **syntax:-      select * from table-name1 inner join table-name2 on condition;	//Mysql
+		 **syntax:-      select * from table-name1, table-name2 where condition;	//Oracle
+ //1,write a query to display all the records using inner joins
+    //select * from employee_info e inner join department d on e.deptid=d.deptid;
+*******************
+3.Outer Join:-
+   Three types:-
+	1.Left Outer Join
+	2.Right Outer Join
+	3.Full Outer join
+ 1.Left Outer Join:-
+	=>Left Outer Join gives inner join plus unmatched record of left table.
+	Note:-
+		 ( Unmatched record:- The record do not have pair in the opposite table with respect to joins)
+	**syntax:-      select * from table-name1, table-name2 where  table-name1.column-name=table-name2.column-name(+);	//Oracle
+	**syntax:-      select * from table-name1 Left Outer join table-name2 on condition;	//Mysql
+ //1,write a query to display all the records using left outer joins
+    //select * from employee_info e left outer join department d on e.deptid=d.deptid;
+ 2.Right Outer Join:-
+	=>Right Outer Join gives inner join plus unmatched record of right table.
+	Note:-
+		 ( Unmatched record:- The record do not have pair in the opposite table with respect to joins)
+	**syntax:-      select * from table-name1, table-name2 where  table-name1.column-name(+)=table-name2.column-name;	//Oracle
+	**syntax:-      select * from table-name1 Right Outer join table-name2 on condition;	//Mysql
+ //1,write a query to display all the records using right outer joins
+    //select * from employee_info e right outer join department d on e.deptid=d.deptid;
+3.Full Outer Join:-
+	=>Full Outer Join is if inner join as well as all the record from both the table do not have any pair.
+	**syntax:-      select * from table-name1 full Outer join table-name2 on condition;	//Mysql it is not supported
+		no syntax for oracle
+ //1,write a query to display all the records usingfull outer joins
+    //select * from employee_info e full outer join department d on e.deptid=d.deptid;	//it shows error
+If we want to use full outer join we go for union.
+***************************************************************************************************
+			NORMALISATION
+
+=>We need to learn Functional Dependencies and Key RDBMS for Normalisation
+*************************************
+Key RDBMS:-
+	1.Key Attributes:- A key attribute is used to find an attribute using which we can uniquely determined a record in a table.
+
+	2.Not Key Attributes:- All the attributes except key attributes is known as non key attributes.
+
+	3.Primary Key Attributes:- A key attributes which is choosen to be a main attributes(primary key) to determine the record of unique key in the table.
+
+	4.Non Primary Key Attributes:- A key attributes other than Primary Key Attributes.
+
+	5.Composite key:-The combination of two are more attributes which determines the record uniquely.
+
+	6.Foreign key:-It relates two tables.It allows null and duplicate values.
+****************************************
+Functional Dependencies:-
+	=>In a Functional Dependencies a relation exist such that an attributes determine another attributes uniquely is known as functional dependencies.
+	Ex:- 	R------> { x , y }	which is x and y are attributes.
+			(determinant)  x----------------->y  (dependent)
+			x is uniquely
+ =>Types of Functional Dependencies:-
+			1.Total Functional Dependencies.
+			2.Partial Functional Dependencies.
+			3.Transitive Functional Dependencies.
+
+	1.Total Functional Dependencies.
+		=>If all the attributes of a relation is determined by a key attribute is known as Total Functional Dependencies.
+		=>Ex:- Family. 	R------------->{a,b,c,d}     (determinant) a-->bcd (dependent)	bcd depends on a.  a-->c, a--->b, a-->d.
+		=>a is father cd are kids b is wife.
+
+	2.Partial Functional Dependencies.
+		=>A relation is set to have a partial function dependency 
+		=>first it consists of composite key attributes.
+		=>second They are exist the dependency such that an attribute can be determined by another attribute which is the part of composite key.
+		=>Ex:- Family. 	R------------->{a,b,c,d}     (determinant) ab-->cd (dependent)	cd depends on ab.  ab-->cd, ab--->c, ab-->d, a.
+		=>a is father cd are kids b is wife.
+
+	3.Transitive Functional Dependencies.
+		=>A relation is set to be Transitive Functional Dependencies if there exist a relation such that an attribute is determined by non-key attributes 
+			which interns is determined by a key attribute.
+		=>Ex:- Friends.    R------------>{a,b,c,d}         a-->c	,c---->d       ,a---->d
+******************************
+Normalization:-
+	=>Data Redendency(Reputation)    - We write same name and id multiple timesto insert different records.
+	=>Anamoly :Side effects on DML operations(Insert,delete,update).
+	 These are the main drawbacks to overcome this drawback we go for normalization.
+
+Definition:-
+	=>Normalization means the process of decomposing the table into smaller table inorder to remove redundancy and anomolies
+	 by identifying dependencies  is called normalisation..
+	=>The process of reducing the table into the smaller normal forms is called normalisation.
+
+=>Normal Form:-     A state of table without any redundancy and anomolies is called normal form.
+
+Tpes of normal Forms:
+	1.First Normal Form
+	2.Second  Normal Form
+	3.Third Normal Form
+	4.BC Normal Form
+	5.Four Normal Form
+
+1.First Normal Form:-
+	=>A table is said to be in the First Normal Form if it satisfy the following conditions.
+		1.Table should not have duplicate values.
+		2.Every cell in the table should be a single value(Atomic value).
+2.Second  Normal Form:-
+	=>Table has said to be 2nf if they follow the conditions.
+		1.It should follow 1nf.
+		2.table should not have partial functional dependencies(not have Composite Key).
+
+Note:- If the table consists partial functional dependencies(not have Composite Key) the attribute which are responsible are removed from the table.
+
+3.Third Normal Form:-
+	=>Table has said to be 3nf if they follow the conditions.
+		1.It should follow 2nf.
+		2.The table should not have Transitive Functional Dependencies.
+
+Note:-1nf ,2nf and 3nf these are based on key attributes and functional dependencies of relational schema.
+
+******************************************************************************************************************************************************
+			ER DIAGRAMS
+ER Diagrams: [Entity Relation Diagram]
+	=>ER diagram describes the structure of database with the help of diagram.
+	=>It is a blueprint of database that can be later use to implement or create a database.
+Component of ER Diagrams:-
+	1.Entity	---------- Rectangle shape
+	2.Attribute     ------------ Ellipse shape
+	3.Relationship   --------------  Rhombus shape
+Single line represents the relation between entity and attributes.
+******************************************************************************************
+				View
+view:-
+	=>Views are logical or vertual tables that can be created on the existing table.
+	=>creating a vertual table(it gives details what the client want).
+	=>View do not acquire memory.
+	=>Any DML operation performed on viewbase. table get replaced.
+	**Syntax:    Create view viewname;
+		select * from view;	//we select and execute this line.
+		select * from employee_info where designation='analyst';
+// update employee table
+SELECT * FROM employee_info where name='anusha';
+update employee_info set age=20 where id=113;
+select * from Name	
+// update Name view
+SELECT * FROM employee_info where name='anusha';
+select * from Name	
+update Name set designation='tester' where id=113;  //it update employee table.
+*******************************************************
+DTL:  Data Transaction Language
+	commit:
+	RollBack:
+	Savepoint: Savepoint work with rollback
+select * from dept;
++--------+--------------+-----------+
+| deptid | dname        | location  |
++--------+--------------+-----------+
+|     10 | accounting   | bangalore |
+|     20 | research     | pune      |
+|     30 | sales        | delhi     |
+|     40 | admin        | mumbai    |
+|     50 | maintainance | chennai   |
+|     60 | operation    | goa       |
++--------+--------------+-----------+
+
+1.set autocommit=0;
+
+2. delete from dept where deptid=60;
+ select * from dept;
++--------+--------------+-----------+
+| deptid | dname        | location  |
++--------+--------------+-----------+
+|     10 | accounting   | bangalore |
+|     20 | research     | pune      |
+|     30 | sales        | delhi     |
+|     40 | admin        | mumbai    |
+|     50 | maintainance | chennai   |
++--------+--------------+-----------+
+5 rows in set (0.00 sec)
+
+3. Rollback;
++--------+--------------+-----------+
+| deptid | dname        | location  |
++--------+--------------+-----------+
+|     10 | accounting   | bangalore |
+|     20 | research     | pune      |
+|     30 | sales        | delhi     |
+|     40 | admin        | mumbai    |
+|     50 | maintainance | chennai   |
+|     60 | operation    | goa       |
++--------+--------------+-----------+
+4. commit;
+5. Rollback;
+6.Savepoint;
+***************************************************************************************
+STORED PROCEDURE:-
+	**Syntax:- call sp_name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

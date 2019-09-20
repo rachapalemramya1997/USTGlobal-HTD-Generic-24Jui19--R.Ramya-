@@ -1,0 +1,168 @@
+	JAVA LAMBDA EXPRESSIONS
+Java Lamda Expressions:-
+	=>Lambda expression is a new and important feature of java which was included in java SE 8.
+	  It provides a clear and concise way to represent functional interface using an expression.
+	  It helps to iterate, filter and extract data from collection.
+
+	1>It is used to provide the implementation of functional interface.
+	2>In case of lambda expression , we don't need to define the method again for providing the implementation.
+	3.Java lambda expression is treated as function,so compiler doesn't create .class file.
+Q, Why use Lambda Expression:
+	1.To provide the implementation of functional interface.	
+	2.Less Coding
+ Java Lamda Expressions syntax:-
+	Argument-List -->( body )
+
+***************************************************************************************
+	THREADS
+Thread:-	A thread is a single sequence of executable code with in a larger program.
+	All the programs so far used just one thread - the main thread that starts automatically when you run the program..
+	but java lets you create programs that start additional threads to perform specified task.
+
+Ex:	1. Web browser can download files while letting you web pages.When you download a file in a web browser, the browser starts  seperate thread to handle the download. 
+	2.videos downloading and viewing at the same time. //two operations on same time.
+	3.Word processor. One thread for writing the things. another thread for spell checking.
+
+MultiThreading:
+	Multithreading is a java feature that allows concurrent execution of two or more parts of a program for maximum utilisation of CPU.
+	Each part of such program is called threads.So, 
+
+Thread Creation:-
+	In java threads can be created in two ways.
+		1.By extending thread class.(java.lang.thread class).
+		2.By implementing the runnable interface.
+
+Thread Creation extending thread class:-
+	=>We create a class that extends java.lang.thread class .
+	=>This class override Run() run method available in the thread class.
+	=>A thread begins its life inside run() method. we create an object of our new class and call start() method to start the execution of  thread.
+	=>start() invokes the run() method on the thread object.
+
+Thread Creation by implementing the runnable interface:-
+	=>We create a class that implements the runnable interface. and override run() method. 
+	=>Then we instantiate a thread object and call start() method on this object.
+
+Every thread will have three important properties:-
+	1, Thread Name
+	2, Thread Id
+	3, Thread priority
+
+Thread Name:-	Thread Names can be created by programmer inorder to identify the threads.
+Thread Id:-	It is a unique number(id) which is created and assigned by the thread scheduler to every single thread inorder to identify the selector.
+Thread priority:-	It is used by the thread scheduler to decide the order of execution of the given threads.
+		The priority of the threads is an integer value ranging between 1-10 we can set the priority of thread using setPriority();
+
+*********************************************************************************************
+
+		Priority of thread using setPriority().
+Thread Life cycle:-
+	1>The start method creates the system resources, necessary to run the thread, schedules the thread to run, and calls the thread's run methos.
+	2>A thread becomes "Not Runnable" when one of these events occurs:
+		a. If sleep method is invoked.
+		b. The thread calls the wait method.
+	3>A thread dies naturally when the run method exists.
+	4>A thread can be in one of the following states:
+		a. NEW - A thread that has not yet started is in this state.
+		b. RUNNABLE - A thread executing in java virtual machine is in this state   {start()}.
+		c.BLOCKED - A thread that is blocked waiting for a monitor lock is in this state   { yield() , sleep() , join() }.
+		d.WAITING - A thread that is waiting indefinitely for another thread to perform action is in this state   { wait() , notify() , notifyAll() }.
+				These methods are used to overcome blocked situation
+		e.TERMINATED - A thread that has excited is in this state   { stop() }.
+
+Race Condition:-
+	Race condition occurs in a multi-threaded environment when more than one thread try to access a shared resource at the same time.
+	Note, It is safe 
+
+Synchronization:-
+	=>In any cases concurrently running threads share data and two threads try to do operations on the same variables at the same time.
+		This often results in corrupt data as two threads try to operate on the same data.
+	=>A popular solution is to provide some kind of lock primitive.
+		Only one thread can acquire a particular lock at any particular time.
+		This can be achieved by using a keyword "Synchronized".
+	=>By using the synchronize only one thread can access the method at a time and a second call will be blocked until the first call returns or wait() 
+		is called inside the synchronized method.
+
+Deadlock:-
+	Deadlock in java is a programming situation where two or more threads are blocked 
+
+************************************************************************
+Q,   Difference between Run() and start() methods
+
+=>Main difference is that when program calls start() method a new Thread is created and code inside run() method is executed in new Thread 
+while if you call run() method directly no new Thread is created and code inside run() will execute on current Thread.
+=>Multiple invocation: In Java’s multi-threading concept, another most important difference between start() and run() method is that we can’t call the start() method 
+twice otherwise it will throw an IllegalStateException whereas run() method can be called multiple times as it is just a normal method calling.
+
+	Run()					start()
+Creates a new thread and the run() method 	No new thread is created and the run() method
+is executed on the newly created thread.		 is executed on the calling thread itself.
+
+Can’t be invoked more than one time 		Multiple invocation is possible
+otherwise throws java.lang.IllegalStateException
+
+Defined in java.lang.Thread class.		Defined in java.lang.Runnable interface and 
+					must be overriden in the implementing class.
+*********************************************************************
+Q,  Difference between sleep() and wait() methods
+
+
+			Sleep()			Wait()
+
+Class  belongs 		java.lang.Thread		java.lang.Object
+
+Context			Called from any context	Only synchronized context
+
+Locking			Does not release the lock	Releases the lock
+			for specified time  or until
+			interrupt. 	
+			
+Wake up Condition      	When time expires or	Awake by call to notify()
+			due to interruption		or notifyAll() method
+
+Execution			Execution of sleep will	Thread wait()
+			pause the current running	continues till a specific condition
+			thread not the object on 	holds true  
+			which it is called. 	
+
+**************************************************************************
+	RegEx
+
+RegEx [Regular Expressions]:-
+
+	=>RegEx can only be use with strings.
+
+	The regular expression in java defines a pattern for a string.
+	=>It can be used for search , edit or manipulate text.
+	=>A regular expression is not language specific but they differ slightly for each language.
+
+	=>Java Regex classes are present in  java.util.regex package that contains 3 classes:
+		1.Pattern
+		2.Matcher		
+		3.PatternSyntaxException
+	
+https://github.com/rohitjaishwal/JAVA-RegEx/tree
+
+commons-iofileutils
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,126 @@
+*********************************************************************************************************
+                                                                                        CONTROL FLOW STATEMENTS
+=>By using this we can control the flow of execution of program.
+	1.If:-      
+ 					condition --------------------true
+					       |                                        |
+					       |false		     condition starts inside if block
+					       |__________________|
+						  |
+						code /statements after if block
+		syntax:
+			if(boolean condition){
+				statements....
+			}
+	2.If-else:-
+						  boolean
+                                                                                                    false------- condition -------true
+					       |                                        |
+				code inside else block           code  inside if block
+					       |__________________|
+						  |
+						code /statements after if-else block
+		syntax:
+			if(boolean condition){
+				statements....
+			}
+			else{
+				statements....
+			}
+	3.If-elseif:-
+	 	=>We go for else-if when we have more than one boolean condition that is to be satisfied.
+		=>Whenever we hava multiple conditions we go for elseif condition.
+		=>We have one if block and one else block but we have 'n' number of conditions.
+						  boolean
+                                                                                                    false------- condition -------true----------------------------(if condition not satisfies go to elseif block and then check the conditions)
+					       |                                        |			|
+				code inside else block           code  inside if block          code inside else if block
+					       |__________________|_____________________|
+						 	  |
+						code /statements after if-else block
+		syntax:
+			if(boolean condition){
+				statements....
+			}
+			elseif{
+				statements....
+			}
+			...........
+			else{
+				statements....
+			}
+	4.Switch:-
+		If we perform same operation in two cases using break statement is demerit.
+		Otherwise using break is merit.
+		                                                                                 condition-----------------------------------------|
+										 |
+							         |------------case1--------------|
+							         |------------case2--------------|
+							         |------------case2--------------|
+							         |
+							code outside switch
+		Syntax:-
+			Switch(case){
+				case 1:statements....
+					break;
+				. ..............
+				default: statement
+			}
+***********************************************************
+	                                        LOOPING STATEMENTS:
+=>starting and ending position is same.
+=>iterate again and again upto condition satisfies.
+	1.For:-
+		Syntax:-
+			for(initialization, test condition , increment/decrement)
+			{
+			   statements......
+			   statements......
+			   statements......
+			}
+	2.while:-
+		//write increment or decrement value inside the loop
+		Syntax:-					false--------------condition-----------------true
+			while(condition)			    |		^	               |
+			{				    |		|	               |
+			   statements......			    |		|------------code inside while loop
+			   statements......			    |_______________________________|
+			   statements......			                |		
+			}				code outside while loop
+	3.dowhile:-
+		certain lines of program is executed after that the condition is checked.
+		=>it displays atleast one output before condition checks.
+		Syntax:-
+			do{
+			   statements......
+			   statements......
+			   statements......
+			     }while(condition)
+	4.Foreach:-
+		we are using with arrays,collection and iteration.
+	5.Nested for loop:-
+		for with in for
+****************************************************************************************************************************
+Any number starting with 0101 take as Octal base
+Any number starting with 0b01 take as binary base
+Any number starting with 0x01 take as hexadecimal base
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		

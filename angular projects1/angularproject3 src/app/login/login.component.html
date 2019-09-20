@@ -1,0 +1,29 @@
+
+<div class="col-md-4 offset-md-4 mt-5">
+        <h4 class="text-center">Please Login!</h4>
+    <form action="" #loginForm='ngForm' (ngSubmit)='printForm(loginForm)'>
+        <div class="form-group">
+            <label for="user name">username</label>
+            <input type="email" name="username" id="" placeholder="enter username" 
+            class="form-control" #username='ngModel' ngModel
+             required minlength="5" email>
+             <div *ngIf='username.invalid && username.touched'>
+<div class="alert alert-danger" *ngIf='username.errors.email'>only email should be entered</div>
+<div class="alert alert-danger" *ngIf='username.errors.minLength'>minimum length should be considered</div>
+             </div>       </div>        
+        <div class="form-group">
+            <label for="password">password</label><br>
+            <input type="text" name="password" id="" placeholder="enter password" 
+            class="form-control" #password='ngModel' ngModel  pattern='ramya123'>
+            <div *ngIf='password.invalid && password.touched'>
+                <div class="alert alert-danger" *ngIf='password.errors.pattern'>pattern doesnt match 'name'</div>
+            </div>
+        </div>
+        <div class="btn-group col-md-12">
+                <button type="reset" class="btn btn-outline-secondary col-md-4">reset</button>
+       
+        <button type="submit" class="btn btn-outline-primary col-md-4 offset-md-2">submit</button>
+    </div>
+    </form>
+</div>
+ 

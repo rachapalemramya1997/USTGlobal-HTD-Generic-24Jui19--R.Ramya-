@@ -1,0 +1,12 @@
+var todaysDate=new Date();
+console.log(todaysDate);
+console.log(todaysDate.getFullYear());
+console.log(todaysDate.getMonth());
+console.log(todaysDate.getDate());
+console.log(todaysDate.getDay());
+var a=todaysDate.getMonth();
+var b=todaysDate.getDay();
+var month=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+console.log(month[a]);
+var day=['sun','mon','tue','wed','thu','fri','sat'];
+console.log(day[b]);

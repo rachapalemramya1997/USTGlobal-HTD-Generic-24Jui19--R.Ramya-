@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee form</title>
+    <style>
+    margin-left: 25%;
+    margin-right: 50%;
+    </style>
+</head>
+<body>
+    <legend>
+        <fieldset>
+            <form action="welcome.html" name="letscheck" method="Get">
+              <div><label for="">user Name</label></div>
+              <div> 
+                <input onkeyup="validateForm()" name="uname" type="text" required>
+                </div>
+                <div>
+                <label for="">password</label>
+                </div><div>
+                <input onkeyup="validateForm()" name="password" type="password" required>
+              </div> 
+              <div><label for="">confirm password</label></div>
+              <div>
+                <input required onkeyup="validateForm()" name="cpsd" type="password">
+              </div>
+              <div>
+              <input type="submit" name="loginSubmit" value="login"></div>
+        
+            </form>
+        </fieldset>
+    </legend>
+   Hello | <span style="display:none">Data</span> |welcome
+    <script src="assi3.js"></script>
+</body>
+</html>

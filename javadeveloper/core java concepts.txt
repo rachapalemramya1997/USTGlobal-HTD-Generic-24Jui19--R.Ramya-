@@ -1,0 +1,93 @@
+********************************************************************************
+                                                                                                          JAVA
+=>Java is object oriented programming language.
+=>Java is strong type language.
+=>Java is very easy to learn.
+=>Java is platform independent.
+=>Java has lot of methods.
+**********
+versions of java:
+=>Java standard edision - it is for stand alone application
+=>Java micro edision - it is used for small devices
+=>Java enterprise edition - we develop an application it is used for a business or organisation
+***********
+JRE =>java runtime environent
+it acts as a interpreter between source and class files
+=>it converts source code into byte code and converts byte code to class or output.
+************
+OBJECT:
+=>object is a group of variables and methods.
+=>in java every entity is treated as object
+=>an object is a entity which has some states and behaviour.
+method:
+=>method is a set of statements written for a particular task.
+=>method create once and call n no of times.
+************
+Keywords:
+These are words which are predefined meanings.It is present inside a programming language.
+=>java has 50 / 53(3 literals)  keywords are present.
+**************
+Identifiers:
+Identifiers are names given to a components or elements of a program.
+=>Rules:
+1.It should always start with an alphabet or a letter.
+2.It is not starting with with a digit but we can add n no of digits after a first character or a letter.
+3.Identifiers are case sensitive.
+4.All the 53 keywords are not identifiers.
+5.only (_,$) special characters are allowed.
+*****************
+VARIABLES:
+=>variable is a small memory space which stores some values.
+=>We can stores some values and some data'
+=>Each and every variable must have some data.
+=>it is temporary.
+***************
+Data Type:
+=>It specifies the type of data that will store in a memory.
+=>Two Types:
+ 1.Primitive datatype
+ 2.Reference datatype
+1.Primitive datatype:
+==> Eight types:
+1.Byte: It consists of 1byte or 8bits .  This range is -128 to 127.
+2.Short: It consists of 2byte or 16bits. This range is  -32768 to 32767.
+3.Int:  It consists of 4byte or 32bits.
+4.Long:  It consists of 8byte or 64bits.
+5.double:  It consists of 4byte or 32bits. //it is used for decimal values
+6.Float:  It consists of 8byte or 64bits.    //it is used for decimal values
+************
+ VARIABLES:
+=>usage 
+datatype var;                         //declaration
+var = value;                            //initilisation
+system.out.println(var);    //utilization
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

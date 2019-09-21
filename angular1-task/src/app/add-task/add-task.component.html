@@ -1,0 +1,20 @@
+<div class="col-md-4 offset-md-4 mt-5">
+    <h4 class="text-center">Please AddText!</h4>
+    <div class="container">
+<form action="" #AddTextForm='ngForm' (ngSubmit)='printForm(addTextForm)'>
+    <div class="form-group">
+        <label for="">AddText</label>
+        <input type="text" name="text" id="" placeholder="enter some text" 
+        class="form-control" #AddText='ngModel' ngModel
+         required minlength="50" text>
+         <div *ngIf='AddText.invalid && AddText.touched'>
+<div class="alert alert-danger" *ngIf='AddText.errors.email'>only alphabetsshould be entered</div>
+<div class="alert alert-danger" *ngIf='AddText.errors.minLength'>minimum length should be considered</div>
+         </div>       </div>        
+
+    <div class="btn-group col-md-12">
+    <button type="submit" class="btn btn-outline-primary col-md-4 offset-md-2">submit</button>
+</div>
+</form>
+</div>
+</div>
